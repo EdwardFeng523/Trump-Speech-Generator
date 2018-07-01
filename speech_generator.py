@@ -5,6 +5,7 @@ Version 1.5
 """
 from collections import defaultdict
 import random
+import pickle
 
 def read_untagged_file(filename):
     """
@@ -80,6 +81,7 @@ def build_markov(document):
         for current in backwardcount[previous]:
             backwardprob[previous][current] = backwardcount[previous][current] / float(sum)
     result =  (forwardprob, backwardprob)
+    
     return result
 
 def build_third_markov(document):
@@ -156,6 +158,13 @@ def build_forth_markov(document):
                     sum += backwardcount[very_early][early][previous][current]
                 for current in backwardcount[very_early][early][previous]:
                     backwardprob[very_early][early][previous][current] = backwardcount[very_early][early][previous][current] / float(sum)
+#    with open('filename.pickle', 'wb') as handle:
+#        pickle.dump(forwardprob, handle, protocol=pickle.HIGHEST_PROTOCOL)
+#
+#    with open('filename.pickle', 'rb') as handle:
+#        b = pickle.load(handle)
+#
+#    print (forwardprob == b)
     result = (forwardprob, backwardprob)
     return result
 
@@ -244,6 +253,8 @@ forforward = formarkov[0]
 forbackward = formarkov[1]
 # print generate_sentence("population",forward, backward, sforward, sbackward)
 
+
+
 def run(word, times):
     """
     run the experiments
@@ -256,6 +267,6 @@ def run(word, times):
         new = generate_sentence(word, forward, backward, sforward, sbackward, forforward, forbackward)
         if len(new) < len(sentence):
             sentence = new
-    print sentence
+    print (sentence)
 
-run("love", 1)
+run("hate", 1)
