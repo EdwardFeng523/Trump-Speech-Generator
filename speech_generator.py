@@ -267,6 +267,6 @@ def run(word, times):
         new = generate_sentence(word, forward, backward, sforward, sbackward, forforward, forbackward)
         if len(new) < len(sentence):
             sentence = new
-    print (sentence)
+    return (sentence)
 
-run("hate", 1)
+#run("hate", 1)
