@@ -5,7 +5,6 @@ Version 1.5
 """
 from collections import defaultdict
 import random
-import pickle
 
 def read_untagged_file(filename):
     """
