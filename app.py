@@ -4,7 +4,7 @@ import speech_generator
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-def get_sentence(word):
+def get_page(word):
     return "welcome to the trumpifier server"
 
 @app.route('/sentence/<word>', methods=['GET'])
